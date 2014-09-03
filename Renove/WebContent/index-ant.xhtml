@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<link type="text/css" rel="stylesheet" href="resources/css/index.css" />
+		<title>E-Commerce Lite</title>
+	</h:head>
+	<h:body> 
+		<h:form id="form">
+			<div class="centro"> 
+			    <p:growl id="messages" showDetail="true" />
+			 
+			    <p:menubar>
+			        <p:menuitem value="Home" icon="ui-icon-home" url="index.jsf" />
+			
+			        <f:facet name="options">
+			            <p:commandButton value="Login" action="#{homeMB.login}" update="@form" ajax="false"  />
+			        </f:facet>
+			    </p:menubar>
+			    
+			    <p:dataGrid var="item" value="#{homeMB.itens}" columns="3" styleClass="item"
+			        rows="12" paginator="true" id="itens"
+			        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			        rowsPerPageTemplate="6,12,16">
+			 
+			        <f:facet name="header">
+			            Itens for Sale
+			        </f:facet>
+			 
+			        <p:panel header="#{item.dsItem}" style="text-align:center;">
+			            <h:panelGrid columns="1" style="width:100%;">
+			                <!-- <p:graphicImage name="demo/images/car/#{car.brand}.jpg"/>  --> 
+			 
+			                <h:outputText value="Valor: #{item.vlVendaFinal}" />
+			            </h:panelGrid>
+			        </p:panel>
+			 
+			    </p:dataGrid>
+			</div>
+		</h:form>
+	</h:body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>E-Commerce Lite</title>
+</h:head>
+
+
+<ui:decorate template="/menu.xhtml">
+	<ui:define name="centro">
+
+		<p:panelGrid styleClass="semBorda">
+			<p:row>
+                <p:column><p:outputLabel for="cdItem" value="Código" /></p:column>
+                <p:column><p:inputText id="cdItem" disabled="true" value="#{itemMB.itemSelecionado.cdItem}" /></p:column>
+            </p:row>
+            
+            <p:row>
+                <p:column><p:outputLabel for="dsItem" value="Descrição" /></p:column>
+                <p:column><p:inputText id="dsItem" value="#{itemMB.itemSelecionado.dsItem}" /></p:column>
+            </p:row>
+            
+            <p:row>
+                <p:column><p:outputLabel value="Custo Compra" /></p:column>
+                <p:column>
+                	<p:inputText id="vlVenda" value="#{itemMB.itemSelecionado.vlVenda}" converter="numberConverter" >
+                		<p:ajax event="blur" update="vlVenda" />
+						<f:convertNumber pattern="#0.00" />
+					</p:inputText>
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column><p:outputLabel for="dsObservacao" value="Observação" /></p:column>
+                <p:column><p:inputTextarea id="dsObservacao" value="#{itemMB.itemSelecionado.dsObservacao}" /></p:column>
+            </p:row>
+            <!-- <p:row>
+            	<p:column><p:fileUpload value="#{fileUploadView.file}" mode="simple" /></p:column>
+            </p:row> -->
+
+			<p:row>
+				<p:column>
+					<p:commandButton value="Salvar" action="#{itemMB.salvar}"
+						update="@form" />
+				</p:column>
+				<p:column>
+					<p:commandButton value="Voltar" immediate="true" action="#{itemMB.voltar}" ajax="false"
+						update="@form" />
+				</p:column>
+			</p:row>
+		</p:panelGrid>
+	</ui:define>
+</ui:decorate>
+</html>

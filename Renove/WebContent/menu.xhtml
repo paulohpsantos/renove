@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+		<link type="text/css" rel="stylesheet" href="resources/css/index.css" />
+		<title>E-Commerce Lite</title>
+	</h:head>
+	<h:body> 
+		<h:form id="form">
+			<div class="centro">  
+			    <p:growl id="messages" showDetail="true" />
+	        	<p:menubar>
+			        <p:menuitem value="Home" icon="ui-icon-home" url="index.jsf" />
+			        <p:submenu label="Cadastros" icon="ui-icon-home">
+			        	<p:menuitem value="Item" url="item.jsf" icon="ui-icon-arrowreturnthick-1-w" />
+			        	<p:menuitem value="Usuário" url="usuario.jsf" icon="ui-icon-arrowreturnthick-1-w" />
+			        </p:submenu>
+			 		<p:menuitem value="Despesas" icon="ui-icon-home" url="despesas.jsf" />
+			        <!--  <p:submenu label="Edit" icon="ui-icon-pencil">
+			            <p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+			            <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+			        </p:submenu>  -->
+			 
+			        <f:facet name="options">
+			            <p:commandButton value="Logout" action="#{homeMB.logout}" update="@form" icon="ui-icon-person" ajax="false" />
+			        </f:facet>
+			    </p:menubar>
+			    
+	            <p:layoutUnit position="center" styleClass="center">
+                    <ui:insert name="centro">
+
+                    </ui:insert>
+                </p:layoutUnit>
+	         </div>
+        </h:form>
+    </h:body>
+</html>

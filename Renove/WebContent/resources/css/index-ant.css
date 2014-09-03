@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+* {
+	font-size: 12px;
+}
+
+.centro {
+	width: 900px;
+	margin: auto;
+}
+
+.item {
+	margin-top: 50px;
+}
+
+.panelLogin tr, .panelLogin td{
+	border: none !important;
+}
+
+.panelLogin {
+	width: 150px;
+	margin: auto;
+	margin-top: 200px;
+	
+}
+
+.semBorda tr, .semBorda td{
+	border: none !important;
+}

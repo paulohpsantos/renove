@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>E-Commerce Lite</title>
+</h:head>
+
+
+<ui:decorate template="/menu.xhtml">
+	<ui:define name="centro">
+
+		<p:panelGrid styleClass="semBorda">
+			<p:row>
+                <p:column><p:outputLabel for="cdUsuario" value="Código" /></p:column>
+                <p:column><p:inputText id="cdUsuario" disabled="true" value="#{usuarioMB.usuarioSelecionado.cdUsuario}" /></p:column>
+            </p:row>
+            
+            <p:row>
+                <p:column><p:outputLabel for="dsUsuario" value="Nome" /></p:column>
+                <p:column><p:inputText id="dsUsuario" value="#{usuarioMB.usuarioSelecionado.dsUsuario}" /></p:column>
+            </p:row>
+            
+            <p:row>
+                <p:column><p:outputLabel for="dsLogin" value="Login" /></p:column>
+                <p:column><p:inputText id="dsLogin" value="#{usuarioMB.usuarioSelecionado.dsLogin}" /></p:column>
+            </p:row>
+            
+            <p:row>
+                <p:column><p:outputLabel for="dsSenha" value="Senha" /></p:column>
+                <p:column><p:password id="dsSenha" value="#{usuarioMB.usuarioSelecionado.dsSenha}" /></p:column>
+            </p:row>
+
+			<p:row>
+				<p:column>
+					<p:commandButton value="Salvar" action="#{usuarioMB.salvar}"
+						update="@form" />
+				</p:column>
+				<p:column>
+					<p:commandButton value="Voltar" immediate="true" action="#{usuarioMB.voltar}" ajax="false"
+						update="@form" />
+				</p:column>
+			</p:row>
+		</p:panelGrid>
+	</ui:define>
+</ui:decorate>
+</html>

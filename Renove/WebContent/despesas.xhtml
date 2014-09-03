@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>E-Commerce Lite</title>
+</h:head>
+
+
+<ui:decorate template="/menu.xhtml">
+
+	<ui:define name="centro">
+
+		
+		<p:panelGrid styleClass="semBorda">
+			<p:row>
+                <p:column><p:outputLabel for="despesaTotal" value="Despesas Totais" /></p:column>
+                <p:column>
+                	<p:inputText id="despesaTotal" value="#{despesasMB.despesaSelecionada.vlDespesaTotal}" converter="numberConverter" >
+                		<p:ajax event="blur" update="despesaTotal" />
+						<f:convertNumber pattern="#0.00" />
+					</p:inputText>
+                </p:column>
+            </p:row>
+            
+            <p:row>
+                <p:column><p:outputLabel for="margemLucro" value="margemLucro" /></p:column>
+                <p:column>
+                	<p:inputText id="margemLucro" value="#{despesasMB.despesaSelecionada.vlMargemLucro}" converter="numberConverter" >
+                		<p:ajax event="blur" update="margemLucro" />
+						<f:convertNumber pattern="#0.00" />
+					</p:inputText>
+                </p:column>
+            </p:row>
+
+			<p:row>
+				<p:column>
+					<p:commandButton value="Salvar" action="#{despesasMB.salvar}"
+						update="@form" />
+				</p:column>
+			</p:row>
+		</p:panelGrid>
+	</ui:define>
+</ui:decorate>
+</html>

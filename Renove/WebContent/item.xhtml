@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>E-Commerce Lite</title>
+</h:head>
+
+
+<ui:decorate template="/menu.xhtml">
+
+	<ui:define name="centro">
+
+		<p:dataTable id="tableItem" var="item" value="#{itemMB.itens}"
+			rowKey="#{item.cdItem}" selection="#{itemMB.itemSelecionado}"
+			selectionMode="single" paginator="true" rows="10"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Código" />
+				</f:facet>
+				<h:outputText value="#{item.cdItem}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Descrição" />
+				</f:facet>
+				<h:outputText value="#{item.dsItem}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Custo Compra" />
+				</f:facet>
+				<h:outputText value="#{item.vlVenda}">
+					<f:convertNumber pattern="#0.00" />
+				</h:outputText>
+			</p:column>
+		</p:dataTable>
+		<p:panelGrid styleClass="semBorda">
+			<p:row>
+				<p:column>
+					<p:commandButton value="Novo" action="#{itemMB.novo}"
+						update="@form" ajax="false" />
+				</p:column>
+				<p:column>
+					<p:commandButton value="Alterar" action="#{itemMB.alterar}"
+						update="@form" />
+				</p:column>
+				<p:column>
+					<p:commandButton value="Excluir" actionListener="#{itemMB.excluir}"
+						update="@form">
+						<p:confirm header="Confirmação"
+							message="Deseja realmente excluir?" icon="ui-icon-alert" />
+					</p:commandButton>
+					<p:confirmDialog global="true" showEffect="fade"
+						hideEffect="explode">
+						<p:commandButton value="Sim" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="Não" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
+				</p:column>
+			</p:row>
+		</p:panelGrid>
+	</ui:define>
+</ui:decorate>
+</html>
