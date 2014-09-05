@@ -9,50 +9,49 @@
 </h:head>
 
 
-<ui:decorate template="/menu.xhtml">
-
+<ui:decorate template="/admin/menu.xhtml">
 	<ui:define name="centro">
 
-		<p:dataTable id="tableItem" var="item" value="#{itemMB.itens}"
-			rowKey="#{item.cdItem}" selection="#{itemMB.itemSelecionado}"
+		<p:dataTable id="tableUsuario" var="usuario" value="#{usuarioMB.usuarios}"
+			rowKey="#{usuario.cdUsuario}" selection="#{usuarioMB.usuarioSelecionado}"
 			selectionMode="single" paginator="true" rows="10"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Código" />
 				</f:facet>
-				<h:outputText value="#{item.cdItem}" />
+				<h:outputText value="#{usuario.cdUsuario}" />
 			</p:column>
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Descrição" />
+					<h:outputText value="Nome" />
 				</f:facet>
-				<h:outputText value="#{item.dsItem}" />
+				<h:outputText value="#{usuario.dsUsuario}" />
 			</p:column>
+			
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Custo Compra" />
+					<h:outputText value="Login" />
 				</f:facet>
-				<h:outputText value="#{item.vlVenda}">
-					<f:convertNumber pattern="#0.00" />
-				</h:outputText>
+				<h:outputText value="#{usuario.dsLogin}" />
 			</p:column>
+			
 		</p:dataTable>
 		<p:panelGrid styleClass="semBorda">
 			<p:row>
 				<p:column>
-					<p:commandButton value="Novo" action="#{itemMB.novo}"
+					<p:commandButton value="Novo" action="#{usuarioMB.novo}"
 						update="@form" ajax="false" />
 				</p:column>
 				<p:column>
-					<p:commandButton value="Alterar" action="#{itemMB.alterar}"
+					<p:commandButton value="Alterar" action="#{usuarioMB.alterar}"
 						update="@form" />
 				</p:column>
 				<p:column>
-					<p:commandButton value="Excluir" actionListener="#{itemMB.excluir}"
+					<p:commandButton value="Excluir" actionListener="#{usuarioMB.excluir}"
 						update="@form">
-						<p:confirm header="Confirmação"
-							message="Deseja realmente excluir?" icon="ui-icon-alert" />
+						<p:confirm header="Confirmação" message="Deseja realmente excluir?"
+							icon="ui-icon-alert" />
 					</p:commandButton>
 					<p:confirmDialog global="true" showEffect="fade"
 						hideEffect="explode">
@@ -66,4 +65,5 @@
 		</p:panelGrid>
 	</ui:define>
 </ui:decorate>
+
 </html>
